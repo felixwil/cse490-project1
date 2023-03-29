@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module registerfile(
-        input sysclk
+        input sysclk,
         output reg [7:0] read0,
         output reg [7:0] read1,
         input [7:0] w,
         input rw,
         input wsel,
-        input [1:0] rsel,
+        input [1:0] rsel
     );
     reg [7:0] A;
     reg [7:0] B;
@@ -39,5 +39,5 @@ module registerfile(
             if (wsel == 0) begin A <= w; end
             else           begin B <= w; end
         end
-    end;
+    end
 endmodule

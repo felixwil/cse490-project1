@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03/29/2023 12:33:33 PM
+// Create Date: 03/17/2023 12:48:42 PM
 // Design Name: 
-// Module Name: multiplexer
+// Module Name: alu
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,12 +19,21 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// IF ID EXE MEM WB
-module multiplexer(
+
+module alu(
+        input sysclk,
         input [7:0] a,
         input [7:0] b,
-        input sel,
-        output [7:0] x
+        input [2:0] imm,
+        input opcode,
+        output reg [7:0] result
     );
-    assign x = (sel) ? a : b;
+    // always @(posedge sysclk) begin
+    //     if (opcode) begin // adding
+    //         result <= a + b;
+    //     end
+    //     else begin
+    //         result <= b << imm;
+    //     end
+    // end
 endmodule

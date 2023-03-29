@@ -18,10 +18,17 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+`include "instructiondecode.v"
+`include "signextender.v"
+`include "instructMem.v"
+`include "registerfile.v"
+`include "multiplexer.v"
+`include "alu.v"
 
 // IF ID EXE MEM WB
 module datapath();
     wire [2:0] inst;
+    wire rt, rs;
     wire [7:0] reg0;
     wire [7:0] reg1;
     wire [7:0] alu1;
@@ -52,7 +59,7 @@ module datapath();
     );
     signextender alusignext(aux, signextimm);
     multiplexer aluselect(reg1, signextimm, alusrc, alu1);
-    alu math(reg0, alu1, aluop, aluresult);
-    memory mem(reg0, reg1, aux, memout);
+    alu math(sysclk, reg0, alu1, aux, aluop, aluresult);
+    memory mem(reg0, reg1, aux, memout); // unimplemented
     multiplexer aluselect(memout, aluresult, reg2mem, regwritedata);
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03/29/2023 12:33:33 PM
+// Create Date: 03/17/2023 14:54:42 PM
 // Design Name: 
-// Module Name: multiplexer
+// Module Name: signextender
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,12 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// IF ID EXE MEM WB
-module multiplexer(
-        input [7:0] a,
-        input [7:0] b,
-        input sel,
-        output [7:0] x
-    );
-    assign x = (sel) ? a : b;
+
+module signextender(input [2:0] aux, output [7:0] signextimm);
+    assign signextender[7:2] = 0;
+    assign signextender[2:0] = aux;
 endmodule

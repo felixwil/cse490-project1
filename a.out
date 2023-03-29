@@ -6,35 +6,35 @@
 :vpi_module "vhdl_sys";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x558c4dcf3bd0 .scope module, "instructMem" "instructMem" 2 23;
+S_0x557a7c661bd0 .scope module, "instructMem" "instructMem" 2 23;
  .timescale -9 -12;
     .port_info 0 /INPUT 8 "addr"
     .port_info 1 /OUTPUT 3 "opcode"
     .port_info 2 /OUTPUT 1 "rt"
     .port_info 3 /OUTPUT 1 "rs"
     .port_info 4 /OUTPUT 3 "aux"
-L_0x558c4dd145b0 .functor BUFZ 8, L_0x558c4dd14400, C4<00000000>, C4<00000000>, C4<00000000>;
-v0x558c4dcf3d50_0 .net *"_s0", 7 0, L_0x558c4dd14400;  1 drivers
-v0x558c4dd13bb0_0 .net *"_s2", 9 0, L_0x558c4dd144c0;  1 drivers
-L_0x7fbd55443018 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
-v0x558c4dd13c90_0 .net *"_s5", 1 0, L_0x7fbd55443018;  1 drivers
-o0x7fbd5548c0a8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
-v0x558c4dd13d50_0 .net "addr", 7 0, o0x7fbd5548c0a8;  0 drivers
-v0x558c4dd13e30_0 .net "aux", 2 0, L_0x558c4dd14900;  1 drivers
-v0x558c4dd13f60_0 .net "inst", 7 0, L_0x558c4dd145b0;  1 drivers
-v0x558c4dd14040 .array "mem", 255 0, 7 0;
-v0x558c4dd14100_0 .net "opcode", 2 0, L_0x558c4dd14670;  1 drivers
-v0x558c4dd141e0_0 .net "rs", 0 0, L_0x558c4dd14830;  1 drivers
-v0x558c4dd142a0_0 .net "rt", 0 0, L_0x558c4dd14760;  1 drivers
-L_0x558c4dd14400 .array/port v0x558c4dd14040, L_0x558c4dd144c0;
-L_0x558c4dd144c0 .concat [ 8 2 0 0], o0x7fbd5548c0a8, L_0x7fbd55443018;
-L_0x558c4dd14670 .part L_0x558c4dd145b0, 0, 3;
-L_0x558c4dd14760 .part L_0x558c4dd145b0, 3, 1;
-L_0x558c4dd14830 .part L_0x558c4dd145b0, 4, 1;
-L_0x558c4dd14900 .part L_0x558c4dd145b0, 5, 3;
-    .scope S_0x558c4dcf3bd0;
+L_0x557a7c6825b0 .functor BUFZ 8, L_0x557a7c682400, C4<00000000>, C4<00000000>, C4<00000000>;
+v0x557a7c661d50_0 .net *"_s0", 7 0, L_0x557a7c682400;  1 drivers
+v0x557a7c681bb0_0 .net *"_s2", 9 0, L_0x557a7c6824c0;  1 drivers
+L_0x7fa8f2105018 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x557a7c681c90_0 .net *"_s5", 1 0, L_0x7fa8f2105018;  1 drivers
+o0x7fa8f214e0a8 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x557a7c681d50_0 .net "addr", 7 0, o0x7fa8f214e0a8;  0 drivers
+v0x557a7c681e30_0 .net "aux", 2 0, L_0x557a7c682900;  1 drivers
+v0x557a7c681f60_0 .net "inst", 7 0, L_0x557a7c6825b0;  1 drivers
+v0x557a7c682040 .array "mem", 255 0, 7 0;
+v0x557a7c682100_0 .net "opcode", 2 0, L_0x557a7c682670;  1 drivers
+v0x557a7c6821e0_0 .net "rs", 0 0, L_0x557a7c682830;  1 drivers
+v0x557a7c6822a0_0 .net "rt", 0 0, L_0x557a7c682760;  1 drivers
+L_0x557a7c682400 .array/port v0x557a7c682040, L_0x557a7c6824c0;
+L_0x557a7c6824c0 .concat [ 8 2 0 0], o0x7fa8f214e0a8, L_0x7fa8f2105018;
+L_0x557a7c682670 .part L_0x557a7c6825b0, 0, 3;
+L_0x557a7c682760 .part L_0x557a7c6825b0, 3, 1;
+L_0x557a7c682830 .part L_0x557a7c6825b0, 4, 1;
+L_0x557a7c682900 .part L_0x557a7c6825b0, 5, 3;
+    .scope S_0x557a7c661bd0;
 T_0 ;
-    %vpi_call 2 33 "$readmemb", "instructions.mem", v0x558c4dd14040 {0 0 0};
+    %vpi_call 2 32 "$readmemb", "instructions.mem", v0x557a7c682040 {0 0 0};
     %end;
     .thread T_0;
 # The file index is used to find the file name in the following table.

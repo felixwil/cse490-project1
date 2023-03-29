@@ -25,7 +25,7 @@ module instructiondecode(
         output registerwrite,
         output aluop,
         output alusrc,
-        output reg2mem,
+        output reg2mem
     );
     parameter ADD   = 0;
     parameter ADDI  = 1;

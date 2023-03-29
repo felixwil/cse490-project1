@@ -28,10 +28,9 @@ module instructMem(
         output [2:0] aux
     );
     reg[7:0] mem[0:255]; //initialize array of bytes
-    initial //read instructions from memory
-        begin
-            $readmemb("instructions.mem",mem); // initialize memory
-        end
+    initial begin //read instructions from memory
+        $readmemb("instructions.mem", mem); // initialize memory
+    end
     //assign output
     wire [7:0] inst;
     assign inst = mem[addr];
