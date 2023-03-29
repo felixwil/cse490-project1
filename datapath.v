@@ -28,15 +28,15 @@ module datapath();
     wire [7:0] aluresult;
     wire [7:0] regwritedata;
     wire [7:0] signextimm;
-    wire [2:0] imm;
+    wire [7:0] pc;
+    wire [2:0] aux;
     wire registerwrite;
     wire regwriteselect;
     wire [1:0] rsel;
     assign rsel[0] = rt;
     assign rsel[1] = rs;
     wire sysclk;
-    instructMem retrieveinst(pc, )
-    instructionsplitter split();
+    instructMem retrieveinst(pc, inst, rt, rs, aux);
     instructiondecode control(
         inst,
         registerwrite,
@@ -50,9 +50,9 @@ module datapath();
         registerwrite,
         rt, rsel
     );
-    signextender alusignext(imm, signextimm);
+    signextender alusignext(aux, signextimm);
     multiplexer aluselect(reg1, signextimm, alusrc, alu1);
     alu math(reg0, alu1, aluop, aluresult);
-    memory mem(reg0, reg1, imm, memout);
+    memory mem(reg0, reg1, aux, memout);
     multiplexer aluselect(memout, aluresult, reg2mem, regwritedata);
 endmodule
