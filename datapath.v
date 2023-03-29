@@ -35,6 +35,8 @@ module datapath();
     assign rsel[0] = rt;
     assign rsel[1] = rs;
     wire sysclk;
+    instructMem retrieveinst(pc, )
+    instructionsplitter split();
     instructiondecode control(
         inst,
         registerwrite,

@@ -25,7 +25,7 @@ module instructiondecode(
         output registerwrite,
         output aluop,
         output alusrc,
-        output writeback,
+        output reg2mem,
     );
     parameter ADD   = 0;
     parameter ADDI  = 1;
@@ -41,5 +41,7 @@ module instructiondecode(
     assign alusrc = inst == ADDI;
     // write to mem if inst == SW
     assign memw = inst == SW;
+    // update regs from mem if inst == LW
+    assign reg2mem = inst == LW;
 endmodule
 

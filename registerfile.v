@@ -5,7 +5,7 @@
 // 
 // Create Date: 03/29/2023 11:47:36 AM
 // Design Name: 
-// Module Name: registermux
+// Module Name: registerfile
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,17 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module registerfile(
+        input sysclk
         output reg [7:0] read0,
         output reg [7:0] read1,
         input [7:0] w,
         input rw,
         input wsel,
         input [1:0] rsel,
-        input set
     );
     reg [7:0] A;
     reg [7:0] B;
-    always @(posedge set) begin
+    always @(posedge sysclk) begin
         if (rw == 0) begin // 0 == reading
             read0 <= (rsel[0]) ? reg0 : reg1;
             read1 <= (rsel[1]) ? reg0 : reg1;
