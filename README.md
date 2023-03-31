@@ -5,4 +5,4 @@ register file, instruction decoder (control unit), alu, multiplexer, and data me
 
 We also started to implement the datapath incorporating all of these components in datapath.v
 
-We have working testbenches for instructionMemory.v, program_counter.v, and 
+We have working testbenches for instructionMemory.v, program_counter.v, and addALU.v
