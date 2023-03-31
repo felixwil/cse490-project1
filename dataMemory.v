@@ -21,20 +21,25 @@
 
 
 module dataMemory(
-    input sysclk,
+    //input sysclk,
     input [7:0] addr,
     input [7:0] writeData,
     input write,
     output reg [7:0] readData
     );
    
-    reg [7:0] mem [0:255];
+    reg[7:0] mem[0:255];
+  
+    initial begin
+      $readmemb("dataMemory.mem", mem);
+    end
    
-    always @(posedge sysclk) begin
+  	always @(*) begin
         if (write) begin
-            mem[addr] <= writeData;
+          mem[addr] <= writeData;  //sw
+      	  $writememb("dataMemory.mem", mem);
         end else begin
-            readData <= mem[addr];
+          readData <= mem[addr];   //lw
         end
     end
 
