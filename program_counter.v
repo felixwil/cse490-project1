@@ -21,8 +21,19 @@
 
 
 module program_counter(
-    input [7:0] a,
-    output [7:0] b
+    //input [7:0] a,
+    input sysclk,
+    output reg [7:0] b
     );
-    assign b = a; //pass new address to ALU and instruction memory
+    
+    reg [7:0] inter;
+    initial begin
+        assign inter = -1; 
+    end
+    
+    always @(posedge sysclk) begin
+        assign b = inter + 1;
+        assign inter = inter + 1;
+    end
+    
 endmodule
