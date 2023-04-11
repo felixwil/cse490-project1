@@ -32,8 +32,9 @@ module program_counter(
     end
     
     always @(posedge sysclk) begin
-        assign b = inter + 1;
+        //assign b = inter;
         assign inter = inter + 1;
+        assign b = inter;
     end
     
 endmodule
