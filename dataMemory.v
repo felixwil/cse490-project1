@@ -19,11 +19,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// IF ID EXE MEM WB
 module dataMemory(
-    //input sysclk,
+    input sysclk,
     input [7:0] addr,
     input [7:0] writeData,
+    input [2:0] imm,
     input write,
     output reg [7:0] readData
     );
@@ -34,7 +35,7 @@ module dataMemory(
       $readmemb("dataMemory.mem", mem);
     end
    
-  	always @(*) begin
+  	always @(posedge sysclk) begin
         if (write) begin
           mem[addr] <= writeData;  //sw
       	  $writememb("dataMemory.mem", mem);

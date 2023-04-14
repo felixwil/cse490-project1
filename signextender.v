@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// IF ID EXE MEM WB
 module signextender(input [2:0] aux, output [7:0] signextimm);
-    assign signextender[7:2] = 0;
-    assign signextender[2:0] = aux;
+    assign signextimm[7:2] = 0;
+    assign signextimm[2:0] = aux;
 endmodule

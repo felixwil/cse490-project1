@@ -19,10 +19,13 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// IF ID EXE MEM WB
 module addALU(
+    input sysclk,
     input [7:0] numa,
     output [7:0] outa
     );
-    assign outa = numa + 1;
+    always @(posedge sysclk) begin
+        outa <= numa + 1;
+    end
 endmodule

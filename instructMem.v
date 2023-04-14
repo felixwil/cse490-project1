@@ -19,8 +19,9 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// IF ID EXE MEM WB
 module instructMem(
+        input sysclk,
         input [7:0] addr,
         output [2:0] opcode,
         output rt,

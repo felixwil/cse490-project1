@@ -24,6 +24,7 @@
 `include "registerfile.v"
 `include "multiplexer.v"
 `include "alu.v"
+`include "dataMemory.v"
 
 // IF ID EXE MEM WB
 module datapath();
@@ -37,18 +38,22 @@ module datapath();
     wire [7:0] signextimm;
     wire [7:0] pc;
     wire [2:0] aux;
+    wire memw;
     wire registerwrite;
-    wire regwriteselect;
+    wire [7:0] memout;
     wire [1:0] rsel;
     assign rsel[0] = rt;
     assign rsel[1] = rs;
     wire sysclk;
-    instructMem retrieveinst(pc, inst, rt, rs, aux);
+    instructMem retrieveinst(sysclk, pc, inst, rt, rs, aux);
     instructiondecode control(
+        sysclk,
         inst,
         registerwrite,
-        aluop, alusrc,
-        reg2mem,
+        aluop, 
+        alusrc,
+        memw,
+        reg2mem
     );
     registerfile rf(
         sysclk,
@@ -60,6 +65,11 @@ module datapath();
     signextender alusignext(aux, signextimm);
     multiplexer aluselect(reg1, signextimm, alusrc, alu1);
     alu math(sysclk, reg0, alu1, aux, aluop, aluresult);
-    memory mem(reg0, reg1, aux, memout); // unimplemented
-    multiplexer aluselect(memout, aluresult, reg2mem, regwritedata);
+    // input [7:0] addr,
+    // input [7:0] writeData,
+    // input [2:0] imm,
+    // input write,
+    // output reg [7:0] readData
+    dataMemory memory(sysclk, reg0, reg1, aux, memw, memout);
+    multiplexer regwriteselect(memout, aluresult, reg2mem, regwritedata);
 endmodule

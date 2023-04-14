@@ -21,10 +21,12 @@
 
 // IF ID EXE MEM WB
 module instructiondecode(
+        input sysclk,
         input [2:0] inst,
         output registerwrite,
         output aluop,
         output alusrc,
+        output memw,
         output reg2mem
     );
     parameter ADD   = 0;

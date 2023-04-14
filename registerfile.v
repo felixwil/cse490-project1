@@ -19,6 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+// IF ID EXE MEM WB
 module registerfile(
         input sysclk,
         output reg [7:0] read0,
@@ -32,12 +33,12 @@ module registerfile(
     reg [7:0] B;
     always @(posedge sysclk) begin
         if (rw == 0) begin // 0 == reading
-            read0 <= (rsel[0]) ? reg0 : reg1;
-            read1 <= (rsel[1]) ? reg0 : reg1;
+            #1 read0 <= (rsel[0]) ? read0 : read1;
+            #1 read1 <= (rsel[1]) ? read0 : read1;
         end
         else begin // 1 == writing
-            if (wsel == 0) begin A <= w; end
-            else           begin B <= w; end
+            if (wsel == 0) begin #1 A <= w; end
+            else           begin #1 B <= w; end
         end
     end
 endmodule
