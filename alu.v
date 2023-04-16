@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// IF ID EXE MEM WB
+
 module alu(
         input sysclk,
         input [7:0] a,
@@ -28,14 +28,13 @@ module alu(
         input opcode,
         output reg [7:0] result
     );
-    
-    always @(posedge sysclk) begin
-        if (opcode) begin 
-            result = a + b;
-        end
-        else begin
-            result = b << imm;
-        end
-    end
-
+     always @(posedge sysclk) begin
+        #4;
+         if (opcode) begin // adding
+             result <= a + b;
+         end
+         else begin
+             result <= a << imm;
+         end
+     end
 endmodule
