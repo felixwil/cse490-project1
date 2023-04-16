@@ -19,8 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// IF ID EXE MEM WB
-module signextender(input [2:0] aux, output [7:0] signextimm);
-    assign signextimm[7:2] = 0;
-    assign signextimm[2:0] = aux;
+
+module signextender(input [2:0] aux, input sysclk, output reg [7:0] signextended);
+    always @(posedge sysclk) begin
+        #1;
+        //signextended = $signed(aux);
+        assign signextended = aux;
+    end
 endmodule
