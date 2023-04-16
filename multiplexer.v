@@ -23,8 +23,12 @@
 module multiplexer(
         input [7:0] a,
         input [7:0] b,
+        input sysclk,
         input sel,
-        output [7:0] x
+        output reg [7:0] x
     );
-    assign x = (sel) ? a : b;
+    always @(posedge sysclk) begin
+        #3;
+        assign x = (sel) ? a : b;
+    end
 endmodule
