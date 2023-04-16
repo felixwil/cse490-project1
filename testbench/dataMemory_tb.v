@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-
 module dataMem_tb;
 
   // Inputs
@@ -25,45 +24,63 @@ module dataMem_tb;
   initial begin
     sysclk = 0;
     addr = 8'h00;
-    din = 8'h55;
+    din = 8'h01;
     write = 1;
     #10;
     write = 0;
+    #10;
   end
   
   always #5 sysclk = ~sysclk;
-  
-  // Read test
-  always @(addr) begin
-    addr <= 8'h00;
-    #5;
-    addr <= 8'h01;
-    #5; 
-    addr <= 8'h02;
-    #5; 
-    addr <= 8'h03;
-    #5;    
-  end
 
-  // Print output
-  always @(dout) begin
-    $display("Memory contents at address %h: %h", addr, dout);
-  end
-  
-
-
-  // Stop simulation after 100 time units
   initial begin
-    #100 $finish;
+    // Write to address 0, 1, 2, 3
+    addr = 8'h00;
+    din = 8'h01;
+    write = 1;
+    #10;
+    write = 0;
+    #10;
+
+    addr = 8'h01;
+    din = 8'h02;
+    write = 1;
+    #10;
+    write = 0;
+    #10;
+
+    addr = 8'h02;
+    din = 8'h03;
+    write = 1;
+    #10;
+    write = 0;
+    #10;
+
+    addr = 8'h03;
+    din = 8'h04;
+    write = 1;
+    #10;
+    write = 0;
+    #10;
+
+    // Read from addresses
+    addr = 8'h00;
+    #10;
+    $display("Memory contents at address 0: %h", dout);
+
+    addr = 8'h01;
+    #10;
+    $display("Memory contents at address 1: %h", dout);
+
+    addr = 8'h02;
+    #10;
+    $display("Memory contents at address 2: %h", dout);
+
+    addr = 8'h03;
+    #10;
+    $display("Memory contents at address 3: %h", dout);
+
+    #10 $finish;
   end
 
 endmodule
-  
-
-
-
-
-
-
-
-
